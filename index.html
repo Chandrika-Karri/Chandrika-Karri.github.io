@@ -1,75 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Your Name] Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chandrika Karri | Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Chandrika Karri, a full-stack developer skilled in React, TypeScript, Express, Prisma, Supabase, Java, Spring Boot, AWS, and cloud-native development." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a30;
+      --panel-2: #18233f;
+      --text: #eef2ff;
+      --muted: #a8b3cf;
+      --accent: #7c9cff;
+      --accent-2: #5eead4;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 18px 40px rgba(0,0,0,0.35);
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #08101f 0%, #0d1530 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(8, 16, 31, 0.75);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .hero {
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: var(--accent-2);
+      background: rgba(94, 234, 212, 0.08);
+      border: 1px solid rgba(94, 234, 212, 0.25);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      margin: 0 0 1rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 62ch;
+      margin: 0 0 1.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0 1.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.2rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #6ee7f9);
+      color: #08101f;
+      border: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    .hero-card,
+    .card,
+    .project-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 24px;
+    }
+
+    .hero-card {
+      padding: 1.4rem;
+    }
+
+    .profile-box {
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1c2747, #101a35);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .stats {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.9rem;
+    }
+
+    .stat {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.3rem;
+      margin-bottom: 0.2rem;
+    }
+
+    section {
+      padding: 1.5rem 0 4.5rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin: 0;
+    }
+
+    .section-head p,
+    .lead {
+      color: var(--muted);
+      max-width: 65ch;
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 1.2rem;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1.05rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.8rem;
+    }
+
+    .tag {
+      padding: 0.48rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(124,156,255,0.12);
+      color: #dbe5ff;
+      border: 1px solid rgba(124,156,255,0.25);
+      font-size: 0.92rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-card {
+      overflow: hidden;
+    }
+
+    .project-visual {
+      height: 220px;
+      background: linear-gradient(135deg, #1f2f5c, #10203f);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: #d4ddfb;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .project-body {
+      padding: 1.25rem;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0.9rem 0 1rem;
+    }
+
+    .chip {
+      font-size: 0.82rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      padding: 1.2rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 0.3rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .contact-box {
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1rem;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 1.5rem 0 3rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .contact-box,
+      .projects-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner,
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Chandrika Karri</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Header / About Me -->
-    <header>
-        <img src="images/profile.png" alt="Profile Picture" class="profile-img">
-        <h1>Hello, I'm Chandrika Karri</h1>
-        <p>I'm an Intern Developer at Botifyskandinavien AB, building dynamic web applications using JavaScript, React, and Express. 
-        I'm also exploring mobile app development with Android Studio. Currently, I'm studying the AWS Cloud Developer course at Jensen Yrkeshögskola, where I learn Java with Spring Boot, databases, AWS cloud services, and creating dynamic web applications using JavaScript, TypeScript, React, and Express. 
-        I hold the AWS Developer Associate certification and have knowledge of DevOps tools including Git, Docker, Kubernetes, Jenkins, and Linux. My passion lies in building interactive, scalable applications and continuously learning new technologies.</p>
-    </header>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <span class="skill">HTML</span>
-            <span class="skill">CSS</span>
-            <span class="skill">JavaScript</span>
-            <span class="skill">React</span>
-            <span class="skill">Node.js</span>
-            <span class="skill">Express</span>
-            <span class="skill">Java</span>
-            <span class="skill">Spring Boot</span>
-            <span class="skill">AWS</span>
-            <span class="skill">Docker</span>
-            <span class="skill">Kubernetes</span>
-            <span class="skill">Git</span>
-            <span class="skill">Linux</span>
-            <span class="skill">Android Studio</span>
+  <header class="hero" id="about">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Full-Stack Developer · AWS Certified</div>
+        <h1>Building production-ready web applications with modern full-stack technologies.</h1>
+        <p>
+          I am Chandrika Karri, a developer focused on creating responsive, scalable, and user-friendly applications using React, TypeScript, Express, Prisma, Supabase, Java, Spring Boot, and AWS. I enjoy turning real business needs into clean, reliable digital products.
+        </p>
+        <p>
+          I am currently studying AWS Cloud Developer at Jensen Yrkeshögskola and recently completed LIA at Botify Skandinavien, where I contributed to a live B2C e-commerce platform for robot products.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" href="mailto:chandrika.kovvuri@gmail.com">Contact Me</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/leela-chandrika-karri-69a6851a" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
-    </section>
+        <p class="muted">Based in Sweden · Open to internships, junior developer roles, and cloud-focused opportunities.</p>
+      </div>
 
+      <div class="hero-card">
+        <div class="profile-box">Add your professional photo here</div>
+        <div class="stats">
+          <div class="stat">
+            <strong>2+</strong>
+            <span class="muted">Full-stack projects</span>
+          </div>
+          <div class="stat">
+            <strong>AWS</strong>
+            <span class="muted">Developer Associate certified</span>
+          </div>
+          <div class="stat">
+            <strong>React</strong>
+            <span class="muted">Frontend development</span>
+          </div>
+          <div class="stat">
+            <strong>Express</strong>
+            <span class="muted">API and backend development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Core Skills</h2>
+          <p>My portfolio should show depth, not just a long list of tools. These are the technologies I want recruiters to remember.</p>
+        </div>
+      </div>
 
-        <div class="project">
-            <img src="images/project1.png" alt="Trafikskola Project Screenshot">
+      <div class="grid skills-grid">
+        <div class="card">
+          <h3>Frontend</h3>
+          <div class="tag-list">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Backend</h3>
+          <div class="tag-list">
+            <span class="tag">Node.js</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">Java</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">REST APIs</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Database & Cloud</h3>
+          <div class="tag-list">
+            <span class="tag">Prisma</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">AWS</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>DevOps & Tools</h3>
+          <div class="tag-list">
+            <span class="tag">Git</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Jenkins</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Featured Projects</h2>
+          <p>These projects represent both academic and real-world development experience, including live deployment and business-facing work.</p>
+        </div>
+      </div>
+
+      <div class="grid projects-grid">
+        <article class="project-card">
+          <div class="project-visual">Botify Skandinavien E-commerce Platform</div>
+          <div class="project-body">
+            <h3>B2C E-commerce Platform for Robot Products</h3>
+            <p class="muted">
+              Developed a live B2C e-commerce platform during my LIA at Botify Skandinavien. I worked on the full stack, deployment, database setup, and domain integration to support an online robot products store.
+            </p>
+            <div class="project-meta">
+              <span class="chip">React</span>
+              <span class="chip">TypeScript</span>
+              <span class="chip">Express</span>
+              <span class="chip">Prisma</span>
+              <span class="chip">Supabase</span>
+              <span class="chip">Shared Hosting</span>
+            </div>
+            <ul>
+              <li>Built responsive user-facing e-commerce pages.</li>
+              <li>Developed backend functionality and application flow.</li>
+              <li>Configured database using Supabase and Prisma ORM.</li>
+              <li>Connected the subdomain to the company’s main website.</li>
+              <li>Contributed to production deployment and launch.</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-secondary" href="https://shop.botifyskandinavien.se" target="_blank" rel="noreferrer">Live Site</a>
+              <a class="btn btn-secondary" href="https://botifyskandinavien.se" target="_blank" rel="noreferrer">Main Website</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-visual">Trafikskola Booking Application</div>
+          <div class="project-body">
             <h3>Trafikskola Web Application</h3>
-            <p>
-                This is a personal pet project to enhance my full-stack development skills. 
-                The application allows users to book time slots for driving classes on specific dates and times. 
-                A super admin has privileges to create admin accounts, view booked slots, and create available slots. 
-                The front-end is built with JavaScript, React, and Express, while the back-end uses the Spring Boot framework. 
-                The application has been tested locally, and I plan to host it online in the future.
+            <p class="muted">
+              A full-stack driving school booking application built to strengthen my software engineering skills. The system allows users to book lesson slots and gives administrators tools to manage schedules and availability.
             </p>
-            <p>
-                <strong>Git Repositories:</strong> 
-                <a href="https://github.com/Chandrika-Karri/trafikskola-fe" target="_blank">Front-end</a> | 
-                <a href="https://github.com/Chandrika-Karri/trafikskola-be" target="_blank">Back-end</a>
-            </p>
+            <div class="project-meta">
+              <span class="chip">React</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">Spring Boot</span>
+              <span class="chip">Admin Dashboard</span>
+            </div>
+            <ul>
+              <li>Users can book driving lesson slots by date and time.</li>
+              <li>Admin users can manage available slots and bookings.</li>
+              <li>Super admin can create admin accounts and monitor schedules.</li>
+              <li>Built as a portfolio project to practice full-stack architecture.</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-secondary" href="https://github.com/Chandrika-Karri/trafikskola-fe" target="_blank" rel="noreferrer">Frontend Repo</a>
+              <a class="btn btn-secondary" href="https://github.com/Chandrika-Karri/trafikskola-be" target="_blank" rel="noreferrer">Backend Repo</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Experience & Education</h2>
+          <p>This section helps recruiters quickly understand my recent practical experience and academic direction.</p>
         </div>
-    </section>
+      </div>
 
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>LIA Intern Developer · Botify Skandinavien AB</h3>
+          <p class="muted">LIA Internship</p>
+          <p>
+            Worked on a live e-commerce platform for robot products, contributing to frontend, backend, database setup, deployment, and domain integration. This experience strengthened my understanding of real-world development, collaboration, and production delivery.
+          </p>
+        </div>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: <a href="chandrika.kovvuri@gmail.com">chandrika.kovvuri@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/leela-chandrika-karri-69a6851a">https://www.linkedin.com/in/leela-chandrika-karri-69a6851a</a></p>
-        <p>GitHub: <a href="https://github.com/Chandrika-Karri">https://github.com/Chandrika-Karri</a></p>
-    </section>
+        <div class="timeline-item">
+          <h3>AWS Cloud Developer Program · Jensen Yrkeshögskola</h3>
+          <p class="muted">Ongoing studies</p>
+          <p>
+            Studying cloud development with a focus on Java, Spring Boot, databases, AWS services, full-stack web development, and modern software engineering practices.
+          </p>
+        </div>
 
-    <script src="js/script.js"></script>
+        <div class="timeline-item">
+          <h3>AWS Certified Developer – Associate</h3>
+          <p>
+            Certified in AWS development concepts, cloud deployment workflows, and building applications on AWS infrastructure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box card">
+        <div>
+          <h2>Let’s Connect</h2>
+          <p class="lead">
+            I am interested in junior developer roles, internships, and opportunities in full-stack development, cloud engineering, and modern web applications.
+          </p>
+        </div>
+        <div class="contact-links">
+          <a class="btn btn-secondary" href="mailto:chandrika.kovvuri@gmail.com">chandrika.kovvuri@gmail.com</a>
+          <a class="btn btn-secondary" href="https://github.com/Chandrika-Karri" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/leela-chandrika-karri-69a6851a" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 Chandrika Karri · Built for GitHub Pages
+    </div>
+  </footer>
 </body>
 </html>
