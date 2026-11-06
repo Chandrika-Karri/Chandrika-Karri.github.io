@@ -83,3 +83,18 @@ ul li {
     border-radius: 20px;
     font-size: 14px;
 }
+
+/* Certificate links */
+.certificate-links {
+  margin-top: 12px;
+}
+
+.certificate-links a {
+  color: var(--accent-2);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.certificate-links a:hover {
+  text-decoration: underline;
+}
