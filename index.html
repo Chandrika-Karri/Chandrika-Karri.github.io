@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chandrika Karri | Full-Stack Developer</title>
   <meta name="description"
-    content="Portfolio of Chandrika Karri, a full-stack developer skilled in React, TypeScript, Express, Prisma, Supabase, Java, Spring Boot, AWS, and cloud-native development." />
+    content="Portfolio of Chandrika Karri, a full-stack developer experienced in React, TypeScript, Node.js, PostgreSQL, Python, Java, Spring Boot, AWS, and cloud development." />
   <style>
     :root {
       --bg: #0b1020;
@@ -230,7 +230,7 @@
     }
 
     .skills-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .card {
@@ -363,6 +363,12 @@
         padding-top: 3.5rem;
       }
     }
+
+    .timeline-item h4 {
+      margin: 1.2rem 0 0.5rem;
+      color: var(--accent-2);
+      font-size: 1rem;
+    }
   </style>
 </head>
 
@@ -393,11 +399,13 @@
           needs into clean, reliable digital products.
         </p>
         <p>
+
           I completed the AWS Cloud Developer program at Jensen Yrkeshögskola
-          and am currently studying Python with AI at Nackademin.
-          I have gained practical full-stack development experience at Hey Sid AB,
-          working on the product and tech team, and at Botify Skandinavien,
-          where I contributed to a live B2C e-commerce platform for robot products.
+          and am currently studying Python with AI at Nackademin, developing
+          skills in Python programming, data analysis, and AI technologies.
+          I have practical full-stack development experience at Hey Sid AB
+          and Botify Skandinavien, contributing to real-world web applications.
+
         </p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#projects">View Projects</a>
@@ -467,12 +475,25 @@
           </div>
         </div>
         <div class="card">
+          <h3>Python & AI</h3>
+          <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Jupyter Notebook</span>
+            <span class="tag">AI Fundamentals</span>
+          </div>
+        </div>
+        <div class="card">
           <h3>Database & Cloud</h3>
           <div class="tag-list">
             <span class="tag">Prisma</span>
             <span class="tag">Supabase</span>
             <span class="tag">AWS</span>
             <span class="tag">SQL</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Drizzle ORM</span>
           </div>
         </div>
         <div class="card">
@@ -577,6 +598,7 @@
 
       <div class="timeline">
 
+
         <!-- Hey Sid Experience -->
         <div class="timeline-item">
           <h3>Fullstack Developer Intern · Hey Sid AB</h3>
@@ -586,19 +608,76 @@
           </p>
 
           <p>
-            Worked as a full-stack engineer in Hey Sid's product and tech team.
-            Owned development tasks end to end, from scoping work with stakeholders
-            and implementation to writing tests, participating in peer reviews,
-            and following changes through to production.
+            Worked as a full-stack developer on Sid, a B2B account-based
+            marketing platform that helps companies identify target accounts,
+            build audiences, run advertising campaigns, and report on results.
           </p>
 
+          <h4>Key Contributions</h4>
+
           <ul>
-            <li>Worked closely with stakeholders across product, design, and operations.</li>
-            <li>Participated in standups, planning, mob programming, and retrospectives.</li>
-            <li>Reviewed colleagues' code and participated in peer reviews of my own work.</li>
-            <li>Worked independently, communicated blockers early, and completed open tasks before finishing the
-              internship.</li>
+            <li>
+              <strong>Backend APIs and Webhooks:</strong>
+              Built and extended internal APIs and webhook integrations
+              across users, campaigns, and audiences, including read endpoints,
+              event dispatch, subscription filtering, and API-key authentication.
+            </li>
+
+            <li>
+              <strong>Reliable Event Delivery:</strong>
+              Implemented a delivery retry mechanism with exponential backoff
+              and dead-lettering, making failed webhook deliveries visible
+              and recoverable instead of silently dropping events.
+            </li>
+
+            <li>
+              <strong>Product Development:</strong>
+              Delivered features across billing, email, and content workflows,
+              including Stripe-backed purchase add-ons, multiple invoice email
+              recipients, self-service email preferences, unsubscribe handling,
+              and LinkedIn content review and notification workflows.
+            </li>
+
+            <li>
+              <strong>Security and Data Protection:</strong>
+              Implemented encryption at rest for stored credentials and
+              migrated existing data through a background job without downtime.
+            </li>
+
+            <li>
+              <strong>Modernisation and Code Quality:</strong>
+              Migrated legacy Next.js areas to TanStack Start, addressed
+              dependency and security issues, and reviewed pull requests
+              to identify scalability and server/client rendering defects.
+            </li>
           </ul>
+
+          <h4>Engineering Ownership</h4>
+
+          <p>
+            Worked in a small development team, taking changes from
+            implementation through testing, code review, and release.
+            Verified functionality in the product after deployment rather
+            than relying solely on CI results.
+          </p>
+
+          <h4>Technology Stack</h4>
+
+          <div class="project-meta">
+            <span class="chip">TypeScript</span>
+            <span class="chip">React</span>
+            <span class="chip">TanStack Start</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Drizzle ORM</span>
+            <span class="chip">Supabase</span>
+            <span class="chip">Trigger.dev</span>
+            <span class="chip">Vitest</span>
+            <span class="chip">Playwright</span>
+            <span class="chip">GitHub Actions</span>
+            <span class="chip">Vercel</span>
+            <span class="chip">Sentry</span>
+          </div>
 
           <div class="project-links">
             <a class="btn btn-secondary" href="assets/hey-sid-internship-certificate.pdf" target="_blank"
